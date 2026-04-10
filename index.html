@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accrew - Professional bookkeeping and CFO services for Hong Kong businesses. Fast monthly close, clean financials, and business insights. From founders to finance teams.">
+    <meta name="keywords" content="hong kong bookkeeping, CFO services, financial reporting, monthly close, xero bookkeeping hong kong, quickbooks hong kong, startup accounting, SME bookkeeping">
+    <title>Accrew - Professional Bookkeeping & CFO Services for Hong Kong Businesses</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.svg" alt="Accrew" class="logo-image" height="40">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#industries" class="nav-link">Industries</a></li>
+                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="#contact" class="btn btn-primary btn-small">Get Started</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Video First -->
+    <section class="hero hero-video-centered">
+        <div class="container">
+            <!-- Video as Primary Hero -->
+            <div class="hero-video-wrapper">
+                <div class="video-container">
+                    <video
+                        autoplay
+                        muted
+                        playsinline
+                        class="hero-video"
+                        poster="images/video-poster.jpg"
+                        id="heroVideo"
+                    >
+                        <source src="videos/accrew-tactical.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <!-- Unmute Button with Pulse Animation -->
+                    <button class="video-unmute pulse" id="unmuteBtn" aria-label="Unmute video">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <line x1="23" y1="9" x2="17" y2="15" class="muted-indicator"></line>
+                            <line x1="17" y1="9" x2="23" y2="15" class="muted-indicator"></line>
+                        </svg>
+                    </button>
+
+                    <!-- Sound hint tooltip -->
+                    <div class="sound-hint" id="soundHint">
+                        🔊 Click for sound
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simplified Content Below Video -->
+            <div class="hero-content-centered">
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary btn-large">Schedule consultation</a>
+                    <a href="#services" class="btn btn-secondary btn-large">What we do</a>
+                </div>
+                <p class="hero-tagline">
+                    Professional bookkeeping for growing businesses in Hong Kong
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section problem-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Common Challenges</span>
+                <h2 class="section-title">
+                    Your Finance Team<br>
+                    <span class="gradient-text">Deserves Better</span>
+                </h2>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon-minimal icon-clock"></div>
+                    <div class="problem-title">Month-end takes forever</div>
+                    <p class="problem-description">
+                        Your close process drags on for weeks. By the time you have numbers, they're already outdated and decisions get delayed.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-minimal icon-chart"></div>
+                    <div class="problem-title">No real-time visibility</div>
+                    <p class="problem-description">
+                        You're running a business on month-old data. Cash position, runway, profitability—you're always looking in the rearview mirror.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-minimal icon-tool"></div>
+                    <div class="problem-title">Manual, error-prone process</div>
+                    <p class="problem-description">
+                        Spreadsheets, manual reconciliations, data entry—your team spends time on mechanics instead of analysis and strategy.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-minimal icon-dollar"></div>
+                    <div class="problem-title">Expensive to hire in-house</div>
+                    <p class="problem-description">
+                        A full-time bookkeeper costs HKD 25-35k/month plus benefits. A controller costs even more. You need the function, not the headcount.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="services" class="section solution-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">
+                    Professional Bookkeeping<br>
+                    <span class="gradient-text">Built for Modern Businesses</span>
+                </h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-minimal icon-chart"></div>
+                    <h3 class="feature-title">Monthly financial close</h3>
+                    <p class="feature-description">
+                        Full P&L, balance sheet, cash flow statement, and management reports. Clean books, on time, every month.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-minimal icon-connect"></div>
+                    <h3 class="feature-title">System integration</h3>
+                    <p class="feature-description">
+                        Connect your bank accounts, payment processors, and business systems. Xero, QuickBooks, Stripe, PayPal—automated data flow.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-minimal icon-dollar"></div>
+                    <h3 class="feature-title">Cash flow management</h3>
+                    <p class="feature-description">
+                        Daily bank reconciliation, AP/AR tracking, and cash position visibility. Know exactly where you stand.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-minimal icon-document"></div>
+                    <h3 class="feature-title">Hong Kong tax & compliance</h3>
+                    <p class="feature-description">
+                        Profit tax preparation, IRD filing, MPF administration, and employer returns. Stay compliant without the headache.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-minimal icon-trend"></div>
+                    <h3 class="feature-title">Business intelligence</h3>
+                    <p class="feature-description">
+                        Unit economics, gross margin analysis, departmental profitability, and custom KPI dashboards tailored to your business.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-minimal icon-target"></div>
+                    <h3 class="feature-title">CFO advisory</h3>
+                    <p class="feature-description">
+                        Strategic planning, scenario modeling, budget vs actuals, and financial forecasting. The CFO function without the CFO salary.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="section industries-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Who We Work With</span>
+                <h2 class="section-title">From Founders to<br><span class="gradient-text">Finance Teams</span></h2>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card featured">
+                    <div class="industry-badge">Growing Businesses</div>
+                    <h3 class="industry-title">Founder-Led Companies</h3>
+                    <p class="industry-description">
+                        You're focused on product and growth. Let us handle the books so you can focus on building your business.
+                    </p>
+                    <ul class="industry-features">
+                        <li>✓ Clean books from day one</li>
+                        <li>✓ Investor-ready financials</li>
+                        <li>✓ Cash runway and burn rate tracking</li>
+                        <li>✓ Setup and integrate your accounting systems</li>
+                    </ul>
+                </div>
+                <div class="industry-card">
+                    <h3 class="industry-title">CFOs & Finance Managers</h3>
+                    <p class="industry-description">
+                        You need a reliable bookkeeping partner so your team can focus on analysis, strategy, and supporting the business.
+                    </p>
+                    <ul class="industry-features">
+                        <li>✓ Fast, accurate monthly close</li>
+                        <li>✓ Multi-entity and multi-currency support</li>
+                        <li>✓ Audit-ready documentation</li>
+                    </ul>
+                </div>
+                <div class="industry-card">
+                    <h3 class="industry-title">Professional Services</h3>
+                    <p class="industry-description">
+                        Project-based businesses need project-level profitability tracking and time & billing integration.
+                    </p>
+                    <ul class="industry-features">
+                        <li>✓ Project P&L and profitability</li>
+                        <li>✓ Time tracking system integration</li>
+                        <li>✓ Client/project analytics</li>
+                    </ul>
+                </div>
+                <div class="industry-card">
+                    <h3 class="industry-title">SaaS & Technology</h3>
+                    <p class="industry-description">
+                        Subscription businesses require revenue recognition, deferred revenue tracking, and SaaS metrics.
+                    </p>
+                    <ul class="industry-features">
+                        <li>✓ MRR/ARR tracking</li>
+                        <li>✓ Cash runway and burn rate</li>
+                        <li>✓ Investor and board reporting</li>
+                    </ul>
+                </div>
+                <div class="industry-card">
+                    <h3 class="industry-title">Retail & E-Commerce</h3>
+                    <p class="industry-description">
+                        Inventory management, cost of goods sold tracking, and multi-channel sales reconciliation.
+                    </p>
+                    <ul class="industry-features">
+                        <li>✓ Inventory and COGS tracking</li>
+                        <li>✓ Multi-channel revenue consolidation</li>
+                        <li>✓ Product profitability analysis</li>
+                    </ul>
+                </div>
+                <div class="industry-card">
+                    <h3 class="industry-title">Trading & Import/Export</h3>
+                    <p class="industry-description">
+                        Multi-currency transactions, FX exposure management, and trade finance accounting.
+                    </p>
+                    <ul class="industry-features">
+                        <li>✓ Multi-currency and FX tracking</li>
+                        <li>✓ Letter of credit reconciliation</li>
+                        <li>✓ Trade finance management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section pricing-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Service Packages</span>
+                <h2 class="section-title">Transparent Pricing<br><span class="gradient-text">Tailored to Your Firm</span></h2>
+                <p class="section-subtitle">Flexible month-to-month arrangements. 30 days' notice for service changes.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Essential</h3>
+                        <div class="pricing-price">
+                            <span class="currency">HKD</span>
+                            <span class="amount">6,000</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="pricing-annual">or <strong>HKD 66,000/year</strong> (1 month free 🎁)</p>
+                        <p class="pricing-description">Core bookkeeping for small businesses</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Up to 150 transactions/month</li>
+                        <li>✓ Monthly P&L, Balance Sheet, Cash Flow</li>
+                        <li>✓ Bank reconciliation (2 accounts)</li>
+                        <li>✓ Xero or QuickBooks setup & management</li>
+                        <li>✓ MPF calculations & reminders</li>
+                        <li>✓ Tax return data preparation</li>
+                        <li>✓ Email support (48h response)</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Growth</h3>
+                        <div class="pricing-price">
+                            <span class="currency">HKD</span>
+                            <span class="amount">12,000</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="pricing-annual">or <strong>HKD 132,000/year</strong> (1 month free 🎁)</p>
+                        <p class="pricing-description">For businesses that need insights, not just reports</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Up to 400 transactions/month</li>
+                        <li>✓ Everything in Essential, plus:</li>
+                        <li>✓ <strong>Weekly KPI dashboard</strong> (revenue, expenses, cash)</li>
+                        <li>✓ Monthly management report with insights</li>
+                        <li>✓ Budget vs actual tracking</li>
+                        <li>✓ Accounts receivable & payable aging</li>
+                        <li>✓ Monthly 20-min review call</li>
+                        <li>✓ Email support (24h response)</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Enterprise</h3>
+                        <div class="pricing-price">
+                            <span class="currency">Let's</span>
+                            <span class="amount">Talk</span>
+                        </div>
+                        <p class="pricing-description">Custom solutions for complex needs</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited transactions</li>
+                        <li>✓ Multi-entity consolidation</li>
+                        <li>✓ Multi-currency accounting</li>
+                        <li>✓ Custom reporting & dashboards</li>
+                        <li>✓ CFO-level strategic advisory</li>
+                        <li>✓ Fundraising support</li>
+                        <li>✓ Audit & compliance coordination</li>
+                        <li>✓ Dedicated finance team</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline btn-block">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-addons">
+                <h3>Add-On Services</h3>
+                <div class="addons-grid">
+                    <div class="addon">Annual profit tax return preparation</div>
+                    <div class="addon">Annual audit coordination</div>
+                    <div class="addon">Additional entity bookkeeping</div>
+                    <div class="addon">Historical cleanup & catch-up</div>
+                    <div class="addon">CFO advisory (ad-hoc)</div>
+                    <div class="addon">Fundraising financial package</div>
+                    <div class="addon">Budget planning & forecasting</div>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-secondary);">
+                    Pricing varies based on scope and complexity. <a href="#contact" style="color: var(--primary-color); font-weight: 500;">Contact us</a> for a quote.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section how-it-works-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Simple Process</span>
+                <h2 class="section-title">From First Call to<br><span class="gradient-text">Monthly Insights</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Initial Consultation (30 min)</h3>
+                        <p>We discuss your firm's requirements, current processes, and compliance obligations to understand how we can best support your practice.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Custom Proposal</h3>
+                        <p>Receive a tailored proposal with recommended package, pricing, and ROI calculation specific to your situation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Onboarding (Week 1-2)</h3>
+                        <p>We establish secure integrations with your systems (Xero, LEAP, bank accounts), conduct initial review, and configure reporting dashboards to your requirements.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>First Month Close (48 hours)</h3>
+                        <p>We close your books in 2 days and deliver your first AI-powered insights dashboard.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3>Ongoing Partnership</h3>
+                        <p>Monthly reviews, continuous optimization, strategic advisory. Your books, always current.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials (Placeholder for future) -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Now Accepting Clients</span>
+                <h2 class="section-title"><span class="gradient-text">Accepting New Clients</span></h2>
+            </div>
+            <div class="cta-box">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">We work with a select number of Hong Kong businesses to ensure we deliver exceptional service to every client.</p>
+                <a href="#contact" class="btn btn-primary btn-large">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Let's Talk About Your Books</h2>
+                <p class="cta-subtitle">Schedule a 30-minute consultation to discuss your current setup, pain points, and how we can help.</p>
+                <div class="contact-options">
+                    <div class="contact-card">
+                        <div class="icon-minimal icon-mail"></div>
+                        <h3>Email</h3>
+                        <a href="mailto:hello@accrew.ai" class="contact-link">hello@accrew.ai</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon-minimal icon-message"></div>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/85266517310" class="contact-link">+852 6651 7310</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon-minimal icon-calendar"></div>
+                        <h3>Schedule</h3>
+                        <a href="https://calendly.com/hireaccrew/30min" target="_blank" class="btn btn-outline">Book consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-text">Accrew</span>
+                        <span class="logo-tagline">Professional Bookkeeping</span>
+                    </div>
+                    <p class="footer-description">
+                        Bookkeeping and CFO services for Hong Kong businesses. Clean financials, timely reporting, and actionable insights.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#pricing">Pricing & Packages</a></li>
+                        <li><a href="#industries">Industries We Serve</a></li>
+                        <li><a href="services.html">All Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Accrew. All rights reserved.</p>
+                <p>Hong Kong | <a href="mailto:hello@accrew.ai">hello@accrew.ai</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+
+    <!-- Video Unmute Control & Replay -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('heroVideo');
+        const unmuteBtn = document.getElementById('unmuteBtn');
+        const soundHint = document.getElementById('soundHint');
+
+        // Unmute toggle
+        if (video && unmuteBtn) {
+            unmuteBtn.addEventListener('click', function() {
+                // Remove pulse animation after first click
+                unmuteBtn.classList.remove('pulse');
+                unmuteBtn.classList.add('clicked');
+
+                // Hide hint
+                if (soundHint) {
+                    soundHint.style.display = 'none';
+                }
+
+                if (video.muted) {
+                    video.muted = false;
+                    unmuteBtn.classList.add('unmuted');
+                    unmuteBtn.setAttribute('aria-label', 'Mute video');
+                } else {
+                    video.muted = true;
+                    unmuteBtn.classList.remove('unmuted');
+                    unmuteBtn.setAttribute('aria-label', 'Unmute video');
+                }
+            });
+        }
+
+        // Auto-loop with 15-second pause at end screen
+        if (video) {
+            video.addEventListener('ended', function() {
+                // Pause for 15 seconds on the final frame, then loop
+                setTimeout(function() {
+                    video.currentTime = 0;
+                    video.play();
+                }, 15000); // 15 seconds
+            });
+        }
+    });
+    </script>
+</body>
+</html>
