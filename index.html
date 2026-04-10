@@ -513,9 +513,20 @@
         const unmuteBtn = document.getElementById('unmuteBtn');
         const soundHint = document.getElementById('soundHint');
 
+        // Try to autoplay, handle if blocked
+        if (video) {
+            video.play().catch(function(error) {
+                console.log('Autoplay blocked:', error);
+                // Autoplay was blocked, wait for user interaction
+            });
+        }
+
         // Unmute toggle
         if (video && unmuteBtn) {
             unmuteBtn.addEventListener('click', function() {
+                // Ensure video is playing
+                video.play();
+
                 // Remove pulse animation after first click
                 unmuteBtn.classList.remove('pulse');
                 unmuteBtn.classList.add('clicked');
