@@ -175,3 +175,138 @@
   });
 
 })();
+
+// ============================================================================
+// Cost Calculator
+// ============================================================================
+
+(function() {
+  'use strict';
+
+  function fmt(n) {
+    return 'HKD ' + n.toLocaleString('en-HK');
+  }
+
+  function getRecommendedTier(txns) {
+    if (txns <= 150) return { name: 'Essential', monthly: 6000, annual: 66000 };
+    if (txns <= 400) return { name: 'Growth', monthly: 12000, annual: 132000 };
+    return { name: 'Enterprise', monthly: null, annual: null };
+  }
+
+  function runCalculator() {
+    var setupEl = document.getElementById('calcSetup');
+    var salaryEl = document.getElementById('calcSalary');
+    var txnsEl = document.getElementById('calcTxns');
+    var txnDisplay = document.getElementById('txnDisplay');
+    var salaryGroup = document.getElementById('salaryGroup');
+    var currentTotalEl = document.getElementById('currentTotal');
+    var currentBreakdownEl = document.getElementById('currentBreakdown');
+    var accrewTotalEl = document.getElementById('accrewTotal');
+    var accrewBreakdownEl = document.getElementById('accrewBreakdown');
+    var savingsHighlight = document.getElementById('savingsHighlight');
+    var savingsAmountEl = document.getElementById('savingsAmount');
+
+    if (!setupEl) return; // Calculator not on this page
+
+    function update() {
+      var setup = setupEl.value;
+      var salary = Math.max(3000, parseInt(salaryEl.value, 10) || 30000);
+      var txns = parseInt(txnsEl.value, 10) || 200;
+
+      txnDisplay.textContent = txns >= 600 ? '600+' : txns;
+
+      // Show/hide salary input based on setup
+      salaryGroup.style.display = setup === 'diy' ? 'none' : 'block';
+
+      // Build current cost breakdown
+      var currentAnnual = 0;
+      var breakdownItems = [];
+
+      if (setup === 'fulltime') {
+        var mpf = Math.round(salary * 0.05);
+        var benefits = 2000;
+        var software = 300;
+        var total = salary + mpf + benefits + software;
+        currentAnnual = total * 12;
+        breakdownItems = [
+          'Salary: ' + fmt(salary) + '/mo',
+          'Employer MPF (5%): ' + fmt(mpf) + '/mo',
+          'Benefits est.: ' + fmt(benefits) + '/mo',
+          'Software (Xero): ' + fmt(software) + '/mo',
+          'Annual total: ' + fmt(currentAnnual)
+        ];
+      } else if (setup === 'parttime') {
+        currentAnnual = salary * 12;
+        breakdownItems = [
+          'Part-time pay: ' + fmt(salary) + '/mo',
+          'Annual total: ' + fmt(currentAnnual)
+        ];
+      } else if (setup === 'diy') {
+        currentAnnual = 0;
+        breakdownItems = [
+          'Direct cost: HKD 0',
+          'But your time has value — and errors can cost more'
+        ];
+      } else if (setup === 'outsourced') {
+        currentAnnual = salary * 12;
+        breakdownItems = [
+          'Current service: ' + fmt(salary) + '/mo',
+          'Annual total: ' + fmt(currentAnnual)
+        ];
+      }
+
+      // Accrew recommended tier
+      var tier = getRecommendedTier(txns);
+      var accrewItems = [];
+
+      if (tier.annual) {
+        accrewItems = [
+          tier.name + ' plan: ' + fmt(tier.monthly) + '/mo',
+          'Annual (1 month free): ' + fmt(tier.annual),
+          'Includes all bookkeeping, reports &amp; MPF'
+        ];
+      } else {
+        accrewItems = [
+          'Enterprise plan — custom pricing',
+          'Designed for 600+ transactions/month',
+          'Multi-entity &amp; CFO advisory included'
+        ];
+      }
+
+      // Render current
+      currentTotalEl.textContent = setup === 'diy' ? 'HKD 0/year' : (fmt(currentAnnual) + '/year');
+      currentBreakdownEl.innerHTML = breakdownItems.map(function(i) {
+        return '<div class="breakdown-item">' + i + '</div>';
+      }).join('');
+
+      // Render Accrew
+      if (tier.annual) {
+        accrewTotalEl.textContent = fmt(tier.annual) + '/year';
+      } else {
+        accrewTotalEl.textContent = 'Let\'s talk';
+      }
+      accrewBreakdownEl.innerHTML = accrewItems.map(function(i) {
+        return '<div class="breakdown-item">' + i + '</div>';
+      }).join('');
+
+      // Savings
+      if (tier.annual && currentAnnual > tier.annual) {
+        var savings = currentAnnual - tier.annual;
+        savingsAmountEl.textContent = fmt(savings) + '/year';
+        savingsHighlight.style.display = 'block';
+      } else if (setup === 'diy') {
+        savingsHighlight.style.display = 'none';
+      } else {
+        savingsHighlight.style.display = 'none';
+      }
+    }
+
+    setupEl.addEventListener('change', update);
+    salaryEl.addEventListener('input', update);
+    txnsEl.addEventListener('input', update);
+
+    update(); // Run on load
+  }
+
+  document.addEventListener('DOMContentLoaded', runCalculator);
+})();
