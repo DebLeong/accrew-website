@@ -757,7 +757,6 @@ a:hover {
 .pricing-card.featured {
   border-color: var(--primary-color);
   border-width: 3px;
-  transform: scale(1.05);
 }
 
 .pricing-badge {
