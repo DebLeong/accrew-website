@@ -733,9 +733,18 @@ a:hover {
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  column-gap: var(--spacing-lg);
+  row-gap: 0;
   margin-bottom: var(--spacing-2xl);
+}
+
+@media (max-width: 640px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
 }
 
 .pricing-card {
@@ -744,8 +753,9 @@ a:hover {
   border-radius: var(--radius-xl);
   overflow: hidden;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
   transition: all var(--transition-base);
 }
 
@@ -837,7 +847,7 @@ a:hover {
 
 .pricing-footer {
   padding: var(--spacing-lg);
-  border-top: 2px solid var(--gray-100);
+  margin-top: auto;
 }
 
 .pricing-roi {
@@ -2060,6 +2070,14 @@ a:hover {
   margin-top: 2px;
 }
 
+.calc-salary-display {
+  float: right;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
 .calc-select {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -2852,4 +2870,171 @@ a:hover {
 
 .data-table tr:hover td {
   background: var(--gray-50);
+}
+
+/* Starter pricing strip */
+.pricing-starter {
+  max-width: 860px;
+  margin: 0 auto var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  background: var(--gray-50);
+}
+
+.pricing-starter-left {
+  flex: 0 0 auto;
+  min-width: 160px;
+}
+
+.pricing-starter-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.pricing-starter-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.pricing-starter-price span {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.pricing-starter-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.pricing-starter-features {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pricing-starter-features li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.pricing-starter-cta {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .pricing-starter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .pricing-starter-features li {
+    white-space: normal;
+  }
+}
+
+/* Simplified calculator numbers */
+.calc-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.calc-number-item {
+  text-align: center;
+}
+
+.calc-number-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.calc-number-value {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.calc-number-value.accent {
+  color: var(--primary-color);
+}
+
+.calc-number-arrow {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .calc-numbers {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .calc-number-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* Calculator email capture */
+.calc-email-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.calc-email-input {
+  flex: 1;
+  max-width: 260px;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: white;
+  transition: border-color var(--transition-base);
+}
+
+.calc-email-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.calc-email-input::placeholder {
+  color: var(--text-muted);
+}
+
+@media (max-width: 480px) {
+  .calc-email-row {
+    flex-direction: column;
+  }
+  .calc-email-input {
+    max-width: 100%;
+    width: 100%;
+  }
 }
