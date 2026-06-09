@@ -265,7 +265,7 @@
       params.append('txns',    txns);
       params.append('savings', savingsEl ? savingsEl.textContent : 'N/A');
 
-      fetch('http://2.25.171.199:5050/send-lead', {
+      fetch('https://api.accrew.ai/send-lead', {
         method: 'POST',
         body: params
       });

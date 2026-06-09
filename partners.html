@@ -245,7 +245,7 @@
                     params.append('biz',     document.getElementById('partnerType').value);
                     params.append('volume',  document.getElementById('partnerVolume').value);
                     params.append('message', document.getElementById('partnerMessage').value);
-                    fetch('http://2.25.171.199:5050/send-lead', { method: 'POST', body: params })
+                    fetch('https://api.accrew.ai/send-lead', { method: 'POST', body: params })
                         .then(function() {
                             btn.textContent = 'Application sent!';
                             btn.disabled = true;
