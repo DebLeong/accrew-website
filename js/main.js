@@ -272,5 +272,6 @@
     }
   }
 
+  window.bookWithEmail = bookWithEmail;
   document.addEventListener('DOMContentLoaded', runCalculator);
 })();
