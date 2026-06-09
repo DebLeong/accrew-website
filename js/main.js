@@ -187,125 +187,89 @@
     return 'HKD ' + n.toLocaleString('en-HK');
   }
 
-  function getRecommendedTier(txns) {
-    if (txns <= 150) return { name: 'Essential', monthly: 6000, annual: 66000 };
-    if (txns <= 400) return { name: 'Growth', monthly: 12000, annual: 132000 };
-    return { name: 'Enterprise', monthly: null, annual: null };
-  }
+  var ACCREW_ANNUAL = 132000;
 
   function runCalculator() {
     var setupEl = document.getElementById('calcSetup');
     var salaryEl = document.getElementById('calcSalary');
-    var txnsEl = document.getElementById('calcTxns');
-    var txnDisplay = document.getElementById('txnDisplay');
     var salaryGroup = document.getElementById('salaryGroup');
     var currentTotalEl = document.getElementById('currentTotal');
-    var currentBreakdownEl = document.getElementById('currentBreakdown');
     var accrewTotalEl = document.getElementById('accrewTotal');
-    var accrewBreakdownEl = document.getElementById('accrewBreakdown');
     var savingsHighlight = document.getElementById('savingsHighlight');
     var savingsAmountEl = document.getElementById('savingsAmount');
 
-    if (!setupEl) return; // Calculator not on this page
+    if (!setupEl) return;
+
+    accrewTotalEl.textContent = fmt(ACCREW_ANNUAL) + '/year';
+
+    var salaryDisplayEl = document.getElementById('calcSalaryDisplay');
+
+    function updateSalaryDisplay() {
+      var val = parseInt(salaryEl.value, 10);
+      salaryDisplayEl.textContent = 'HKD ' + val.toLocaleString('en-HK');
+      var pct = ((val - 5000) / (80000 - 5000)) * 100;
+      salaryEl.style.background = 'linear-gradient(to right, var(--primary-color) ' + pct + '%, var(--gray-200) ' + pct + '%)';
+    }
 
     function update() {
       var setup = setupEl.value;
-      var salary = Math.max(3000, parseInt(salaryEl.value, 10) || 30000);
-      var txns = parseInt(txnsEl.value, 10) || 200;
+      var salary = parseInt(salaryEl.value, 10) || 30000;
 
-      txnDisplay.textContent = txns >= 600 ? '600+' : txns;
-
-      // Show/hide salary input based on setup
       salaryGroup.style.display = setup === 'diy' ? 'none' : 'block';
 
-      // Build current cost breakdown
       var currentAnnual = 0;
-      var breakdownItems = [];
-
       if (setup === 'fulltime') {
-        var mpf = Math.round(salary * 0.05);
-        var benefits = 2000;
-        var software = 300;
-        var total = salary + mpf + benefits + software;
-        currentAnnual = total * 12;
-        breakdownItems = [
-          'Salary: ' + fmt(salary) + '/mo',
-          'Employer MPF (5%): ' + fmt(mpf) + '/mo',
-          'Benefits est.: ' + fmt(benefits) + '/mo',
-          'Software (Xero): ' + fmt(software) + '/mo',
-          'Annual total: ' + fmt(currentAnnual)
-        ];
-      } else if (setup === 'parttime') {
+        currentAnnual = (salary + Math.round(salary * 0.05) + 2000 + 300) * 12;
+      } else if (setup !== 'diy') {
         currentAnnual = salary * 12;
-        breakdownItems = [
-          'Part-time pay: ' + fmt(salary) + '/mo',
-          'Annual total: ' + fmt(currentAnnual)
-        ];
-      } else if (setup === 'diy') {
-        currentAnnual = 0;
-        breakdownItems = [
-          'Direct cost: HKD 0',
-          'But your time has value — and errors can cost more'
-        ];
-      } else if (setup === 'outsourced') {
-        currentAnnual = salary * 12;
-        breakdownItems = [
-          'Current service: ' + fmt(salary) + '/mo',
-          'Annual total: ' + fmt(currentAnnual)
-        ];
       }
 
-      // Accrew recommended tier
-      var tier = getRecommendedTier(txns);
-      var accrewItems = [];
+      currentTotalEl.textContent = setup === 'diy' ? 'Time cost only' : (fmt(currentAnnual) + '/year');
 
-      if (tier.annual) {
-        accrewItems = [
-          tier.name + ' plan: ' + fmt(tier.monthly) + '/mo',
-          'Annual (1 month free): ' + fmt(tier.annual),
-          'Includes all bookkeeping, reports &amp; MPF'
-        ];
-      } else {
-        accrewItems = [
-          'Enterprise plan — custom pricing',
-          'Designed for 600+ transactions/month',
-          'Multi-entity &amp; CFO advisory included'
-        ];
-      }
-
-      // Render current
-      currentTotalEl.textContent = setup === 'diy' ? 'HKD 0/year' : (fmt(currentAnnual) + '/year');
-      currentBreakdownEl.innerHTML = breakdownItems.map(function(i) {
-        return '<div class="breakdown-item">' + i + '</div>';
-      }).join('');
-
-      // Render Accrew
-      if (tier.annual) {
-        accrewTotalEl.textContent = fmt(tier.annual) + '/year';
-      } else {
-        accrewTotalEl.textContent = 'Let\'s talk';
-      }
-      accrewBreakdownEl.innerHTML = accrewItems.map(function(i) {
-        return '<div class="breakdown-item">' + i + '</div>';
-      }).join('');
-
-      // Savings
-      if (tier.annual && currentAnnual > tier.annual) {
-        var savings = currentAnnual - tier.annual;
-        savingsAmountEl.textContent = fmt(savings) + '/year';
+      if (currentAnnual > ACCREW_ANNUAL) {
+        savingsAmountEl.textContent = fmt(currentAnnual - ACCREW_ANNUAL) + '/year';
         savingsHighlight.style.display = 'block';
-      } else if (setup === 'diy') {
-        savingsHighlight.style.display = 'none';
       } else {
         savingsHighlight.style.display = 'none';
       }
     }
 
-    setupEl.addEventListener('change', update);
-    salaryEl.addEventListener('input', update);
-    txnsEl.addEventListener('input', update);
+    salaryEl.addEventListener('input', function() {
+      updateSalaryDisplay();
+      update();
+    });
 
-    update(); // Run on load
+    setupEl.addEventListener('change', update);
+    updateSalaryDisplay();
+    update();
+  }
+
+  function bookWithEmail() {
+    var email = document.getElementById('calcEmail').value.trim();
+    var txns = document.getElementById('calcTxns') ? document.getElementById('calcTxns').value : '';
+    var setup = document.getElementById('calcSetup') ? document.getElementById('calcSetup').value : '';
+    var spend = document.getElementById('calcSalary') ? document.getElementById('calcSalary').value : '';
+    var savingsEl = document.getElementById('savingsAmount');
+
+    // Open Calendly with email pre-filled
+    var calUrl = 'https://calendly.com/hireaccrew/30min';
+    if (email) calUrl += '?email=' + encodeURIComponent(email);
+    window.open(calUrl, '_blank');
+
+    // Send lead notification via Google Apps Script — replace APPS_SCRIPT_URL with your Web App URL
+    if (email) {
+      var params = new URLSearchParams();
+      params.append('email',   email);
+      params.append('setup',   setup);
+      params.append('spend',   'HKD ' + parseInt(spend, 10).toLocaleString('en-HK') + '/month');
+      params.append('txns',    txns);
+      params.append('savings', savingsEl ? savingsEl.textContent : 'N/A');
+
+      fetch('http://2.25.171.199:5050/send-lead', {
+        method: 'POST',
+        body: params
+      });
+    }
   }
 
   document.addEventListener('DOMContentLoaded', runCalculator);
